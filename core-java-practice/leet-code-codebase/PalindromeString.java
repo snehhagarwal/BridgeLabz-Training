@@ -10,6 +10,7 @@ public class PalindromeString {
         System.out.println(func(str));
     }
 
+    //function to check the palindrome string
     public static boolean func(String s){
         //solved using two pointer approach
         int left=0;  
