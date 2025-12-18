@@ -1,7 +1,7 @@
 # BridgeLabz-Training 🚀
 
 Welcome to my BridgeLabz-Training repo!  
-This README serves as a central log of my daily progress across different topics, branches, and Java modules.  
+This README serves as a central log of my daily progress across different topics, branches, and .Net and C# modules.  
 Each entry includes concepts covered and skills practiced.
 
 ---
