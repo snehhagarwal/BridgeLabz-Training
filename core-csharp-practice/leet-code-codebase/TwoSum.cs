@@ -13,5 +13,6 @@ class TwoSum{
                 }
             }
         }
+        return result;
     }
 }
