@@ -23,3 +23,10 @@ Each entry includes concepts covered and skills practiced.
 - Converting Java programs to C# equivalents, handling syntax changes. 🔄
 - Building and running C# programs with dotnet CLI. ▶️
 
+---
+
+## Day 3: December 19, 2025 - Introduction to basics of C# 💻📁
+**Topic:** Operators, Data Types and Type Conversion  🔧    
+**What I Learnt:** 📚
+- To perform basic operation on variables.
+- To study differnt data types and their conversion.
