@@ -2,7 +2,6 @@ using System;
 
 class KmToMilesInput{
     static void Main(){
- 
         //input from user
         Console.WriteLine("Enter the distance in km: ");
         double km=Convert.ToDouble(Console.ReadLine());
