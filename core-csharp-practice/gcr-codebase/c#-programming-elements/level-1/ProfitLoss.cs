@@ -2,7 +2,6 @@ using System;
 
 class ProfitLoss{
     static void Main(string[] args){
-
         //cost price
         double costPrice= 129;
 
@@ -17,6 +16,6 @@ class ProfitLoss{
 
         Console.WriteLine("The Cost Price is INR " + costPrice + " and Selling Price is INR " + sellingPrice);
         Console.WriteLine("The Profit is INR " + profit + " and the profit percentage is " + profitPercent);
-        
+
     }
 }
