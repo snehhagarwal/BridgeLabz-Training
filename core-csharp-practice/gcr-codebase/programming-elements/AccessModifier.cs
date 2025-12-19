@@ -1,6 +1,6 @@
 using System;
 
-class AcessModifier{
+class AccessModifier{
 
     //public - accesible everywhere
     public int num1=20;
