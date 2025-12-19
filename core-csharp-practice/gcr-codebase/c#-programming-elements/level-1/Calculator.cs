@@ -2,7 +2,6 @@ using System;
 
 class Calculator{
     static void Main(){
-
         //first number
         Console.WriteLine("Enter the first number: ");
         double num1=Convert.ToDouble(Console.ReadLine());
