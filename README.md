@@ -30,3 +30,4 @@ Each entry includes concepts covered and skills practiced.
 **What I Learnt:** 📚
 - To perform basic operation on variables.
 - To study differnt data types and their conversion.
+- Hands-on practice using variables, data types,operators, and access modifiers.
