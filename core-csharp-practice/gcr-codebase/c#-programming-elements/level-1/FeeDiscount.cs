@@ -15,5 +15,6 @@ class FeeDiscount{
         double final=fee-discount;
 
         Console.WriteLine("The discount amount is INR " + discount + " and the final discounted fee is INR " + final);
+        
     }
 }
