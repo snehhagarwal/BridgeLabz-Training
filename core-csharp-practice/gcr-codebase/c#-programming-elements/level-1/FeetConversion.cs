@@ -3,7 +3,6 @@ using System;
 class FeetConversion{
     static void Main(){
         //distance in feet as input
-
         Console.WriteLine("Enter the distance in feet: ");
         double feet=Convert.ToDouble(Console.ReadLine());
 
