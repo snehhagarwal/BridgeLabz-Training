@@ -2,7 +2,6 @@ using System;
 
 class SideOfSquare{
     static void Main(){
-
         //perimeter of the sqaure
         Console.WriteLine("Enter the perimter: ");
         double peri=Convert.ToDouble(Console.ReadLine());
