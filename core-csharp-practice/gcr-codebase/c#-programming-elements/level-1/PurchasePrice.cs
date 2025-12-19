@@ -13,6 +13,5 @@ class PurchasePrice{
         double total=unit*quantity;
 
         Console.WriteLine("The total purchase price is INR " + total + " if the quantity " + quantity + " and unit price is INR " + unit);
-
     }
 }
