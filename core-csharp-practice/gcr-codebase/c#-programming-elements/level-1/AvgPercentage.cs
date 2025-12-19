@@ -2,6 +2,7 @@ using System;
 
 class AvgPercentage{
     static void Main(string[] args){
+        
         //marks in maths
         int maths=94;
 
