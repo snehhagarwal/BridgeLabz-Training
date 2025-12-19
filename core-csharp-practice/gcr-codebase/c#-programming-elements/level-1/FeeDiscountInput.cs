@@ -2,7 +2,6 @@ using System;
 
 class FeeDiscountInput{
     static void Main(){
-
         //input from user
         Console.WriteLine("Ener the fee: ");
         double fee=Convert.ToDouble(Console.ReadLine());
@@ -16,6 +15,6 @@ class FeeDiscountInput{
         double final=fee - discount;
 
         Console.WriteLine("The discount amount is INR " + discount + " and the final discounted fee is INR " + final);
-        
+
     }
 }
