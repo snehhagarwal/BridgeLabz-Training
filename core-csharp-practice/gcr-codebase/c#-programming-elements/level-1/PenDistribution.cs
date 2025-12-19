@@ -15,5 +15,6 @@ class PenDistribution{
           int remainingpens = pen%students ;
 
           Console.WriteLine("The pen per student is " + penstudent + " and the remaining pen not distributed is " + remainingpens);
+          
     }
 }
