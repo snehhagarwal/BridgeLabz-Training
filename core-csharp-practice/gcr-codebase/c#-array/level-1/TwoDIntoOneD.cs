@@ -14,7 +14,7 @@ class TwoDIntoOneD{
         int[] array=new int[row*column];
         int idx=0;
 
-        //taking elements in 2 D as input 
+        //taking elements in 2D as input  and storing in 1D
         for(int i=0;i<row;i++){
             for(int j=0;j<column;j++){
                 Console.Write("Enter the element: ");
@@ -26,7 +26,7 @@ class TwoDIntoOneD{
         //printing array
         Console.WriteLine("1D Array: ");
         for(int i=0;i<array.Length;i++){
-            Console.Write(array[i] + " ");
+            Console.Write(arr[i] + " ");
         }
 
     }
