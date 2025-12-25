@@ -17,7 +17,7 @@ Each day highlights the topics covered, concepts learned, and tasks completed us
 ---
 
 ## Day 2: December 17, 2025 – GitHub Setup and Java Basics 📅
-**Topic:** GitHub Repository Setup, Folder Structure Organization 📁
+**Topic:** GitHub Repository Setup, Folder Structure Organization 📁  
 **What I Learnt:** 📚
 - Setting up GitHub repositories for project tracking.
 - Creating and organizing folder structures for Java and C# projects.
@@ -27,43 +27,75 @@ Each day highlights the topics covered, concepts learned, and tasks completed us
 ---
 
 ## Day 3: December 18, 2025 – Introduction to .NET and C# 🔧
-**Topic:** .NET Framework, C# Syntax, Java to C# Conversion 🛠️
+**Topic:** .NET Framework, C# Syntax, Java to C# Conversion 🛠️  
 **What I Learnt:** 📚
-- Basics of the .NET ecosystem and C# language.
-- Key differences between Java and C# syntax and execution.
-- Converting Java programs to C# equivalents.
-- Understanding IL, MSIL, CLR, and JIT compilation.
-- Building and running C# programs.
+
+### Morning Session:
+- Converted Java programs into C# and pushed them to GitHub.
+- Learned how to rename branches and folders in Git.
+- Improved understanding of project structure and organization.
+
+### Afternoon Session:
+- .NET architecture: CLR, assemblies, metadata, and components.
+- Understanding IL / MSIL and the JIT compilation process.
+- Difference between managed and unmanaged code.
+- C# basics:
+  - `Console` and `Console.WriteLine`
+  - `using System` namespace
+  - Taking input using `Console.ReadLine()`
+- Key differences between Java and C# syntax and execution flow.
+- Building and running C# programs using .NET tools.
 
 ---
 
 ## Day 4: December 19, 2025 – C# Basics and Memory Concepts 💻
-**Topic:** Operators, Data Types, Type Conversion, Memory Management 🔧
+**Topic:** Operators, Data Types, Type Conversion, Memory Management 🔧  
 **What I Learnt:** 📚
-- C# operators and data types.
-- Implicit and explicit type conversion.
-- Heap, Stack, and Static memory areas.
-- Static vs non-static members.
-- Constructors and access modifiers.
+
+### Morning Session:
+- Operators in C# and their usage in expressions.
+- Data types: `int`, `double`, `bool`, `char`, `string`.
+- Implicit and explicit type conversions.
+- Writing simple programs using operators and type casting.
+
+### Afternoon Session:
+- Internal execution of C# programs and memory usage.
+- Heap memory: object storage and non-static members.
+- Stack memory: method calls, local variables, execution flow.
+- Causes and understanding of Stack Overflow errors.
+- Static Memory Area (Method Area).
+- Static vs non-static members and execution order.
+- Constructors and object initialization.
+- Access modifiers in C#:
+  - `public`, `private`, `protected`, `internal`
+  - `protected internal`, `private protected`
 
 ---
 
 ## Day 5: December 22, 2025 – C# Control Flow Lab Practice 💻
-**Topic:** Control Flow Statements and Decision Making 🔁
+**Topic:** Control Flow Statements and Decision Making 🔁  
 **What I Learnt:** 📚
-- Conditional statements (`if`, `else`, `switch`).
-- Looping constructs (`for`, `while`).
-- Logical operators and boolean expressions.
-- Use of `break` and `continue`.
+- Purpose and usage of control flow statements in C#.
+- Boolean (`bool`) data type and boolean expressions.
+- Logical operators: `&&`, `||`, `!`.
+- Conditional statements: `if`, `else if`, `else`.
+- Looping constructs: `for`, `while`.
+- Using `break` and `continue` to control loops.
+- Implementing `switch` statements for multi-way decisions.
 
 ---
 
 ## Day 6: December 23, 2025 – C# Arrays Lab Practice 🧮
-**Topic:** Arrays in C# 🔢
+**Topic:** Arrays in C# 🔢  
 **What I Learnt:** 📚
-- Single and multi-dimensional arrays.
-- Accessing arrays using loops.
-- Using the `Length` property.
-- Input validation and best coding practices.
-
----
+- Basics of arrays and their importance in data storage.
+- Creating and accessing single-dimensional arrays.
+- Iterating arrays using `for` loops.
+- Modifying array elements.
+- Using the `Length` property to avoid hard-coded values.
+- Understanding multi-dimensional and 2D arrays (matrices).
+- Accessing multi-dimensional arrays using nested loops.
+- Following best programming practices:
+  - Proper naming conventions
+  - Comments and indentation
+  - Input validation and error handling
