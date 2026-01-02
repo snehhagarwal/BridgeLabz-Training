@@ -1,6 +1,6 @@
 using System;
 
-class Menu
+class Menu 
 {
     private string[] items;
     private bool[] available;

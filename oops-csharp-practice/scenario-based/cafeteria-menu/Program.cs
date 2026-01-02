@@ -8,7 +8,6 @@ class Program
         double[] prices={20,10,100,120,50,60,100,40,70,100};
 
         Menu menu=new Menu(items,prices);
-
         Order order=new Order();
 
         Console.WriteLine("Welcome to the Cafe");
