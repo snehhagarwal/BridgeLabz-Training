@@ -98,26 +98,66 @@ Each entry includes concepts covered and skills practiced.
 
 ---
 
-## Day 9: December 29, 2025-  Scenario-Based Problem Solving 📅                           
-**Topic:** Logical Thinking & Real-World Scenarios 💡                    
-**What I Learnt:** 📚                       
-- Understood how to analyze scenario-based problem statements. 🔁                                   
-- Broke real-world problems into smaller logical steps.🚦                           
-- Applied conditional statements, loops, arrays, strings, and methods together.🧩                               
-- Improved problem-solving and debugging skills in C#. ✅                               
-- Temperature Analyzer: Analyzed temperature data and performed calculations based on conditions. 📦                       
-- Snake and Ladder Game: Implemented game logic using loops, conditions, arrays, and random numbers. 🧠                        
-- Sentence Formatter: Worked with strings to format and analyze sentences. 🔗                                      
-- Student Score Card: Calculated total, average, highest, and lowest scores using arrays. 🔁                                                
+## Day 9: December 29, 2025- OOPS Fundamentals & Scenario-Based Problems 📅                    
+**Topic:** Introduction to OOPS & Logical Scenarios 💡                          
+**What I Learnt:** 📚                    
+- Introduction to Object-Oriented Programming (OOPS) 🔢                   
+- Core OOPS concepts: Class, Object, Encapsulation, Abstraction (basic understanding) 🗂️                    
+- Representing real-world entities using classes and objects 🧠                       
+- Practice & Scenario-Based Assignments:Temperature Analyzer, Snake and Ladder Game, Sentence Formatter, Student Score Card ✅                     
 
 ---
 
-## Day 10: December 30, 2025-  Advanced Scenario-Based Applications 📅                               
-**Topic:** Mini Console Applications in C# 🖥️                           
+## Day 10: December 30, 2025- Constructors, Instance Members & Scenarios 📅                       
+**Topic:** Object Creation & Class Design 🏗️                          
 **What I Learnt:** 📚                              
-- Designed mini console-based applications. 🔗                                  
-- Implemented role-based logic and validation. ✅                            
-- Applied modular programming for better structure. 📦                           
-- Strengthened understanding of real-world application flow. 🧩                           
-- Library Management System: Implemented book listing, availability status, and role-based operations. 🔁                             
+- Constructors in C# 🌐                          
+- Default and parameterized constructors 🔗                               
+- Instance variables and instance methods 💻                                                    
+- Object initialization using constructors ✅                                       
+- Practice & Scenario-Based Assignments: Library Management System, Student Quiz Grader 🧠                                                 
+
+---
+
+## Day 11: December 31, 2025- Keywords in C# & Practical Scenarios 📅                                                  
+**Topic:** this, static, sealed & is Operator 🔑                                                      
+**What I Learnt:** 📚                                                        
+- this keyword for resolving naming conflicts 🧠                                   
+- static variables and methods 🧩                                                     
+- sealed keyword to restrict inheritance 📦                            
+- is operator for type checking 🌐                                                                                           
+- Practice & Scenario-Based Assignments: Bank Account System, Employee / Student Type Verification, Secure Utility Class 💻                                
+
+---
+
+## Day 12: January 1, 2026- Object Modeling & Class Diagram 📅                                                
+**Topic:** System Design & UML Basics 🧩                                    
+**What I Learnt:** 📚                                              
+- Object modeling concepts 🏗️                                                              
+- Identifying classes, attributes, and methods 📏                                                        
+- Class relationships 🌳                                                  
+- Introduction to UML class diagrams 🔢🔤                                                     
+- Practice & Scenario-Based Assignments:Library System Object Model, Student Management System Design 🔗                                      
+
+---
+
+## Day 13: January 2, 2026- Inheritance in C# 📅                                         
+**Topic:** Code Reusability & Hierarchical Design 🌳                         
+**What I Learnt:** 📚                            
+- Inheritance and IS-A relationship 🧩                                             
+- Base and derived classes 💻                           
+- Use of protected members 📏                                   
+- Code reusability using inheritance 🌐                                                   
+- Practice & Scenario-Based Assignments: Animal Hierarchy, Employee Management System, Student Hierarchy 🔢🔤                                  
+
+--- 
+
+## Day 14: January 3, 2025- OOPS Practice Questions 📅                                       
+**Topic:** Applying OOPS Concepts Through Practice 💻                              
+**What I Learnt:** 📚                                   
+- Revised all core OOPS concepts: Class & Object, Constructors, Inheritance, Encapsulation 🔗                                                  
+- Keywords (this, static, sealed, is) 📏                                    
+- Strengthened understanding through hands-on coding 🧩                          
+- Improved problem-solving using object-oriented approach 🔢🔤                                                                                      
+- Practice & Assignments: Solved multiple practice questions based on OOPS concepts, Implemented real-world problems using proper class design 💻                            
 - Student Quiz Grader: Compared student answers with correct answers. Calculated scores and displayed feedback. 🧠
