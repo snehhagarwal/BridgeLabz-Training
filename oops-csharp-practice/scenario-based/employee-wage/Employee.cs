@@ -9,18 +9,20 @@ namespace BridgeLabz_Training.employee_wage
     internal class Employee
     {
         // Stores employee ID
-        private int EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
 
         // Stores employee name
-        private string EmployeeName { get; set; }
+        public string EmployeeName { get; set; }
 
         // Stores employee salary
-        private double EmployeeSalary { get; set; }
+        public double EmployeeSalary { get; set; }
 
         // Returns employee details as string
         public override string ToString()
         {
-            return "Employee ID: " + EmployeeId + ", Employee Name: " + EmployeeName + ", Employee Salary: " + EmployeeSalary;
+            return "Employee ID: " + EmployeeId +
+                   ", Employee Name: " + EmployeeName +
+                   ", Employee Salary: " + EmployeeSalary;
         }
     }
 }

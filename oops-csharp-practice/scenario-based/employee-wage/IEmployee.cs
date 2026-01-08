@@ -9,11 +9,14 @@ namespace BridgeLabz_Training.employee_wage
     internal interface IEmployee
     {
         //UC2 :- Daily wage functionality
-        void CalculateDailyWage();   
+        void CalculateDailyWage(Employee employee);
+
         //UC5:- Monthly Wage functionality
-        void CalculateMonthlyWage();
+        void CalculateMonthlyWage(Employee employee);
+
         //UC6:- Wage Till Condition functionality
-        void CalculateWageTillCondition();
-        Employee AddEmployee();
+        void CalculateWageTillCondition(Employee employee);
+
+        public static Employee[] AddEmployee();
     }
 }
