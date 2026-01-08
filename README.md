@@ -47,7 +47,7 @@ Each entry includes concepts covered and skills practiced.
 ---
 
 ## Day 5: December 22, 2025 – C# Control Flow Statements 🔁       
-**Topic:** Decision Making and Looping Constructs in C#          
+**Topic:** Decision Making and Looping Constructs in C# 📁        
 **What I Learnt:** 📚          
 - Understood the role of control flow statements in program execution. 🚦       
 - Learned about boolean values and boolean expressions. ✔️❌          
@@ -60,7 +60,7 @@ Each entry includes concepts covered and skills practiced.
 ---
 
 ## Day 6: December 23, 2025 – Arrays in C# 🧮          
-**Topic:** Single & Multi-Dimensional Arrays            
+**Topic:** Single & Multi-Dimensional Arrays  📁          
 **What I Learnt:** 📚         
 - Learned the basics of arrays and their importance in C#. 📦       
 - Created and accessed single-dimensional arrays. 🔢           
@@ -160,4 +160,48 @@ Each entry includes concepts covered and skills practiced.
 - Strengthened understanding through hands-on coding 🧩                          
 - Improved problem-solving using object-oriented approach 🔢🔤                                                                                      
 - Practice & Assignments: Solved multiple practice questions based on OOPS concepts, Implemented real-world problems using proper class design 💻                            
-- Student Quiz Grader: Compared student answers with correct answers. Calculated scores and displayed feedback. 🧠
+- Student Quiz Grader:Compared student answers with correct answers. Calculated scores and displayed feedback. 🧠
+
+  ---
+
+## Day 15: January 5, 2025- Advanced OOPS Concepts & Case Studies 📅                                 
+**Topic:** Encapsulation, Polymorphism, Interface & Abstract Class 🧠                            
+**What I Learnt:** 📚                                                
+- Deep understanding of Encapsulation using properties 📏                    
+- Polymorphism through method overriding and runtime behavior 🧮                       
+- Difference between Interface and Abstract Class ✅                                     
+- Applying multiple OOPS concepts together in real-world applications 📦                            
+- Practice & Scenario-Based Assignments:Hospital Patient Management System, Vehicle Rental Application 📁                      
+
+---
+
+## Day 16: January 6, 2025- Inheritance, Interfaces & Arrays 📅                                       
+**Topic:** Polymorphism with Interfaces and Collections 🐦                                 
+**What I Learnt:** 📚                                   
+- Implementing multiple interfaces 🌐                                      
+- Using arrays to store objects 🧩                                               
+- Runtime type checking using is operator 📏                                              
+- Applying polymorphism while iterating collections 🏗️                                                                                                                                
+- Practice & Scenario-Based Assignments:Bird Sanctuary System(Scenario: EcoWing Wildlife Conservation Center), Customer Service Call Log Manager(Stored call logs using arrays) 💻            
+
+---
+
+## Day 17: January 7, 2025- Data Structures Introduction 📅                         
+**Topic:** Linked List & Problem Solving 🧩                           
+**What I Learnt:** 📚                                     
+- Introduction to Data Structures 📁                          
+- Concept of Linked List ✅                                  
+- Difference between arrays and linked lists 🌐                                   
+- Practical use cases of linked lists 📏                                                                                         
+- Practice & Scenario-Based Assignments:Employee Wage Computation Problem(Calculated employee wages based on conditions). 📦                             
+  
+---
+
+## Day 18: January 8, 2025- Collections & Polymorphic Systems 📅                                        
+**Topic:** Stack, Queue, HashMap & System Design 🏠                                         
+**What I Learnt:** 📚                                         
+- Stack data structure and its operations 💻                                              
+- Queue data structure and FIFO behavior 🧮                                                      
+- HashMap and hashing function basics 🌐                                              
+- Choosing correct data structures for scenarios 🏗️                                                    
+- Practice & Scenario-Based Assignments:Smart Home Automation(Demonstrated polymorphism). ✅
