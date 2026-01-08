@@ -15,6 +15,20 @@ class StudentList
 {
     StudentNode head;
 
+    // Adds a new student at the start of the list
+    public void AddAtBeginning(int roll, string name, int age, string grade)
+{
+    StudentNode node = new StudentNode
+    {
+        Roll = roll,
+        Name = name,
+        Age = age,
+        Grade = grade,
+        next = head
+    };
+    head = node;
+}
+
     // Adds a new student at the end of the list
     public void AddAtEnd(int roll,string name,int age,string grade)
     {
@@ -32,6 +46,39 @@ class StudentList
         }
         temp.next=node;
     }
+
+    // Adds a new student at the specified position
+    public void AddAtPosition(int pos, int roll, string name, int age, string grade)
+{
+    if (pos == 1)
+    {
+        AddAtBeginning(roll, name, age, grade);
+        return;
+    }
+
+    StudentNode temp = head;
+    for (int i = 1; i < pos - 1 && temp != null; i++)
+    {
+        temp = temp.next;
+    }
+
+    if (temp == null)
+    {
+        Console.WriteLine("Invalid position");
+        return;
+    }
+
+    StudentNode node = new StudentNode
+    {
+        Roll = roll,
+        Name = name,
+        Age = age,
+        Grade = grade,
+        next = temp.next
+    };
+    temp.next = node;
+}
+
 
     // Deletes a student by roll number
     public void DeleteByRoll(int roll)
