@@ -152,7 +152,7 @@ Each entry includes concepts covered and skills practiced.
 
 --- 
 
-## Day 14: January 3, 2026- OOPS Practice Questions 📅                                       
+## Day 14: January 3, 2026- OOPS Practice Questions 📅                                               
 **Topic:** Applying OOPS Concepts Through Practice 💻                              
 **What I Learnt:** 📚                                   
 - Revised all core OOPS concepts: Class & Object, Constructors, Inheritance, Encapsulation 🔗                                                  
@@ -164,7 +164,7 @@ Each entry includes concepts covered and skills practiced.
 
   ---
 
-## Day 15: January 5, 2026- Advanced OOPS Concepts & Case Studies 📅                                 
+## Day 15: January 5, 2026- Advanced OOPS Concepts & Case Studies 📅                                                      
 **Topic:** Encapsulation, Polymorphism, Interface & Abstract Class 🧠                            
 **What I Learnt:** 📚                                                
 - Deep understanding of Encapsulation using properties 📏                    
@@ -186,7 +186,7 @@ Each entry includes concepts covered and skills practiced.
 
 ---
 
-## Day 17: January 7, 2026- Data Structures Introduction 📅                         
+## Day 17: January 7, 2026- Data Structures Introduction 📅                                     
 **Topic:** Linked List & Problem Solving 🧩                           
 **What I Learnt:** 📚                                     
 - Introduction to Data Structures 📁                          
@@ -197,11 +197,44 @@ Each entry includes concepts covered and skills practiced.
   
 ---
 
-## Day 18: January 8, 2026- Collections & Polymorphic Systems 📅                                        
+## Day 18: January 8, 2026- Collections & Polymorphic Systems 📅                                                       
 **Topic:** Stack, Queue, HashMap & System Design 🏠                                         
 **What I Learnt:** 📚                                         
 - Stack data structure and its operations 💻                                              
 - Queue data structure and FIFO behavior 🧮                                                      
 - HashMap and hashing function basics 🌐                                              
 - Choosing correct data structures for scenarios 🏗️                                                    
-- Practice & Scenario-Based Assignments:Smart Home Automation(Demonstrated polymorphism). ✅
+- Practice & Scenario-Based Assignments:Smart Home Automation(Demonstrated polymorphism). ✅                            
+
+---
+
+## Day 21: January 9, 2026 - Stack & Queue Concepts 📅                                                    
+**Topic:** Understanding Stack & Queue Data Structures 🧱📥                                                              
+**What I Learnt:** 📚                                                                                                                                                       
+- Understood the concept of Stack (LIFO – Last In First Out) 🧵                                                              
+- Understood the concept of Queue (FIFO – First In First Out) ⚙️                                                    
+- Learned basic stack operations:Push, Pop, Peek 📏                                                            
+- Learned basic queue operations:Enqueue, Dequeue 📦                                                             
+- Studied real-world use cases of Stack and Queue ▶️                                                                  
+- Practice & Assignments:Implemented basic programs, Focused on understanding core logic rather than scenarios. 🌳                                                            
+
+---
+
+## Day 22: January 12, 2026- Scenario-Based Programming 📅                                                                                   
+**Topic:** Real-World Problem Solving Using OOP 🏭💰                                                                                     
+**What I Learnt:** 📚                                                                     
+- Implemented scenario-based programs using OOP concepts 📏                                                                
+- Designed classes and methods for real-world applications ▶️                                                
+- Applied conditional logic for decision making ✅                                                     
+- Improved modular and structured coding approach ⚙️                                                                
+- Practice & Scenario-Based Assignments:Metal Custom Manufacturing System, Implemented loan eligibility check, Displayed approval or rejection report 🔑                  
+
+--
+
+## Day 23: January 13, 2026 - Searching Algorithms & Scenario-Based Applications 📅                                                               
+**Topic:** Linear Search, Binary Search & Search-Based Systems 🔍📚                                                                      
+**What I Learnt:** 📚                                                                
+- Learned Linear Search algorithm 🌳                                         
+- Learned Binary Search algorithm 🌐                                                          
+- Understood time complexity basics for searching techniques 🧵                                                                           
+- Practice & Scenario-Based Assignments:Implemented Linear Search program, Implemented Binary Search program, Bookshelf Management System, Movie Scheduler System 📦
