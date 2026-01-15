@@ -1,5 +1,6 @@
 // Model class demonstrating encapsulation
 public class AddressBookModel{
+   //private fileds so that no-one can access 
    private string address;
    private string firstName;
    private string LastName;
@@ -9,6 +10,9 @@ public class AddressBookModel{
    private int phoneNumber;
    private string email;
 
+   //public functions 
+   //get-returns value
+   //set-setting value
    public string FirstName{get {return firstName;} set{firstName=value;}}
    public string LastName{get{return LastName;} set{ lastName=value;}}
    public string Address{get{return address;} set{address=value;}}
@@ -17,5 +21,4 @@ public class AddressBookModel{
    public string Zip{get{return zip;} set{Zip=value;}}
    public int PhoneNumber{get{return phoneNumber;} set{phoneNumber=value;}}
    public string Email{get{return email;} set{email=value;}}
-
 }
