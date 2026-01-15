@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 class AddressBookUtility : IAddressBook
 {
-    private LinkedList<AddressBookModel> contacts=new LinkedList<AddressBookModel>();
+    private LinkedList<AddressBookModel> contacts = new LinkedList<AddressBookModel>();
 
     //UC-2 Add A New Contact
     public void AddContact()
     {
-        AddressBookModel person=new AddressBookModel();
+        AddressBookModel person = new AddressBookModel();
 
         Console.Write("Enter First Name: ");
         person.FirstName = Console.ReadLine();
@@ -41,27 +41,27 @@ class AddressBookUtility : IAddressBook
     //UC-3 Edit existing contact using name
     public void EditContact(string firstName)
     {
-        foreach(AddressBookModel person in contacts)
+        foreach (AddressBookModel person in contacts)
         {
             if (person.FirstName.Equals(firstName))
             {
                 Console.Write("Enter Address: ");
-                person.Address=Console.ReadLine();
+                person.Address = Console.ReadLine();
 
                 Console.Write("Enter new city: ");
-                person.City=Console.ReadLine();
+                person.City = Console.ReadLine();
 
                 Console.Write("Enter New State: ");
-                person.State=Console.ReadLine();
+                person.State = Console.ReadLine();
 
                 Console.Write("Enter new zip: ");
-                person.Zip=Console.ReadLine();
+                person.Zip = Console.ReadLine();
 
                 Console.Write("Enter new Phone Number: ");
-                person.PhoneNumber=Convert.ToInt32(Console.ReadLine());
+                person.PhoneNumber = Convert.ToInt32(Console.ReadLine());
 
                 Console.Write("Enter Email: ");
-                person.Email=Console.ReadLine();
+                person.Email = Console.ReadLine();
 
                 Console.WriteLine("Contact updated");
                 return;
@@ -73,7 +73,7 @@ class AddressBookUtility : IAddressBook
     //UC-4 Delete contact using name
     public void DeleteContact(string firstName)
     {
-        foreach(AdressBookModel person in contacts)
+        foreach (AdressBookModel person in contacts)
         {
             if (person.FirstName.Equals(firstName))
             {
@@ -83,6 +83,54 @@ class AddressBookUtility : IAddressBook
             }
         }
         Console.WriteLine("Contact not found");
+    }
+
+    // uc-5 Add Multiple Person using Array
+    public void AddMultipleContacts()
+    {
+        Console.Write("How many person you want to add");
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        AddressBookModel[] arr = new AddressBookModel[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.WriteLine("Enter details for person: ");
+            AddressBookModel person = new AddressBookModel();
+
+            Console.Write("Enter First Name: ");
+            person.FirstName = Console.ReadLine();
+
+            Console.Write("Enter Last Name: ");
+            person.LastName = Console.ReadLine();
+
+            Console.Write("Enter Address: ");
+            person.Address = Console.ReadLine();
+
+            Console.Write("Enter City: ");
+            person.City = Console.ReadLine();
+
+            Console.Write("Enter State: ");
+            person.State = Console.ReadLine();
+
+            Console.Write("Enter Zip: ");
+            person.Zip = Console.ReadLine();
+
+            Console.Write("Enter Phone Number: ");
+            person.PhoneNumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Email: ");
+            person.Email = Console.ReadLine();
+
+            arr[i]=person;
+        }
+
+        foreach(AddressBookModel person in arr)
+        {
+            contacts.AddLast(person);
+        }
+
+        Console.WriteLine("Multiple contacts added");
     }
 
     
