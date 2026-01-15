@@ -4,47 +4,75 @@ class AddressBookMenu
 {
     public void Start()
     {
-        IAddressBook utility=new AddressBookUtility();
+        //before uc-4 used
+        // IAddressBook utility=new AddressBookUtility();
+        AddressBookUtility curr = null;
         int choice;
 
         do
         {
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1. Add Contact");
-            Console.WriteLine("2. Delete Contact");
-            Console.WriteLine("3. Edit Contact");
+            Console.WriteLine("1. Create Address Book");
+            Console.WriteLine("2. Select Address Book");
+            Console.WriteLine("3. Add Contact");
             Console.WriteLine("4. Add Multiple Contacts");
-            Console.WriteLine("5. Exit");
-            Console.Write("Enter choice");
+            Console.WriteLine("5. Edit Contact");
+            Console.WriteLine("6. Delete Contact");
+            Console.WriteLine("7. Exit");
+            Console.Write("Enter choice: ");
 
-            choice=Convert.ToInt32(Console.ReadLine());
+            choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
             {
                 case 1:
-                    utility.AddContact();
+                    currentBook = AddressBookUtility.CreateAddressBook();
                     break;
+
                 case 2:
-                    Console.Write("Enter first Name to Edit: ");
-                    string edit=Console.ReadLine();
-                    utility.EditContact(edit);
+                    currentBook = AddressBookUtility.SelectAddressBook();
                     break;
+
                 case 3:
-                    Console.Write("Enter first name to edit: ");
-                    string delete=Console.ReadLine();
-                    utility.DeleteContact(delete);
+                    if (currentBook != null)
+                    {
+                        currentBook.AddContact();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please create or select an Address Book first");
+                    }
                     break;
+
                 case 4:
-                    utility.AddMultipleContacts();
+                    if (currentBook != null)
+                    {
+                        currentBook.AddMultipleContacts();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please create or select an Address Book first");
+                    }
                     break;
+
                 case 5:
+                    Console.Write("Enter First Name: ");
+                    currentBook?.EditContact(Console.ReadLine());
+                    break;
+
+                case 6:
+                    Console.Write("Enter First Name: ");
+                    currentBook?.DeleteContact(Console.ReadLine());
+                    break;
+
+                case 7:
                     Console.WriteLine("Exit the program");
                     break;
                 default:
-                    Console.WriteLine("Invalid Choice: ");
+                    Console.WriteLine("Invalid Choice");
                     break;
             }
 
-        }while(choice!=4);
+        } while (choice != 4);
     }
 }
