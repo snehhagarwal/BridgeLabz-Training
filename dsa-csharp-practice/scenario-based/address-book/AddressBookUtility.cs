@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 class AddressBookUtility : IAddressBook
 {
+    //UC-6 Multiple Address Book
+    int n=Convert.ToInt32(Console.ReadLine());
+    private static AddressBookUtility[] addressBooks=new AddressBookUtility[n];
+    private static string[] addressBookNames=new string[n];
+    private static int bookCount=0;
     private LinkedList<AddressBookModel> contacts = new LinkedList<AddressBookModel>();
 
     //UC-2 Add A New Contact
@@ -85,7 +90,7 @@ class AddressBookUtility : IAddressBook
         Console.WriteLine("Contact not found");
     }
 
-    // uc-5 Add Multiple Person using Array
+    // UC-5 Add Multiple Person using Array
     public void AddMultipleContacts()
     {
         Console.Write("How many person you want to add");
@@ -133,5 +138,46 @@ class AddressBookUtility : IAddressBook
         Console.WriteLine("Multiple contacts added");
     }
 
-    
+    //UC-6 creating new AddressBook
+    public static AddressBookUtility CreateAddressBook()
+    {
+        Console.Write("Enter unique Name: ");
+        string name=Console.ReadLine();
+
+        for(int i = 0; i < bookCount; i++)
+        {
+            if (addressBookNames[i].Equals(name))
+            {
+                Console.WriteLine("Address Book exists");
+                return addressBooks[i];
+            }
+        }
+
+        addressBookNames[bookCount]=name;
+        addressBooks[bookCount]=new AddressBookUtility();
+        bookCount++;
+
+        Console.WriteLine("Address Book created");
+        return addressBooks[bookCount-1];
+    }
+
+    //select address book which one to use
+    public static AddressBookUtility SelectAddressBook()
+    {
+        Console.Write("Enter Book Name: ");
+        string name=Console.ReadLine();
+
+        for(int i = 0; i < bookCount; i++)
+        {
+            if (addressBookNames[i].Equals(name))
+            {
+                Console.WriteLine("Address book selected");
+                return addressBooks[i];
+            }
+        }
+
+        Console.WriteLine("Address Book not found");
+        return null;
+    }
+
 }
