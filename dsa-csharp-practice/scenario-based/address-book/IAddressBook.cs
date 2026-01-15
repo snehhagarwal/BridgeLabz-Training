@@ -1,6 +1,7 @@
 interface IAddressBook
 {
-    void AddContact();
-    void EditContact(string firstName);
-    void DeleteContact(string firstName);
+    void AddContact(); //UC1 + UC2
+    void EditContact(string firstName); //UC-3
+    void DeleteContact(string firstName); //UC-4
+    void AddMultipleContacts(); //UC-5  
 }
