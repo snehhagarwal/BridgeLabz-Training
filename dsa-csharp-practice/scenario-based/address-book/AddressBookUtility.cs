@@ -1,31 +1,41 @@
 using System;
-using System.Collections.Generic;
 
 class AddressBookUtility : IAddressBook
 {
-    //UC-6 Multiple Address Book
-    int n = Convert.ToInt32(Console.ReadLine());
-    private static AddressBookUtility[] addressBooks = new AddressBookUtility[n];
-    private static string[] addressBookNames = new string[n];
-    private static int bookCount = 0;
-    private LinkedList<AddressBookModel> contacts = new LinkedList<AddressBookModel>();
+    //UC-6 Multiple Address Books
+    private int maxContacts = 100; // max per address book
+    private AddressBookModel[] contacts = new AddressBookModel[100]; // array for contacts
+    private int contactCount = 0; // current number of contacts in this book
 
-    //UC-7 Duplicate Check
+    // LinkedList previously used till UC-3
+    // private LinkedList<AddressBookModel> contacts = new LinkedList<AddressBookModel>();
+
+    // Multiple Address Books
+    private static int maxBooks = 10;
+    private static AddressBookUtility[] addressBooks = new AddressBookUtility[maxBooks];
+    private static string[] addressBookNames = new string[maxBooks];
+    private static int bookCount = 0;
+
+    // UC-7 Duplicate Check 
     private bool IsDuplicate(AddressBookModel person)
     {
-        foreach (AddressBookModel existing in contacts)
+        for (int i = 0; i < contactCount; i++)
         {
-            if (existing.Equals(person))
-            {
+            if (contacts[i].Equals(person))
                 return true;
-            }
         }
         return false;
     }
 
-    //UC-2 Add A New Contact
+    //UC-2 Add Contact
     public void AddContact()
     {
+        if (contactCount >= maxContacts)
+        {
+            Console.WriteLine("Address Book full.");
+            return;
+        }
+
         AddressBookModel person = new AddressBookModel();
 
         Console.Write("Enter First Name: ");
@@ -34,7 +44,6 @@ class AddressBookUtility : IAddressBook
         Console.Write("Enter Last Name: ");
         person.LastName = Console.ReadLine();
 
-        //UC-7 Check
         if (IsDuplicate(person))
         {
             Console.WriteLine("Duplicate contact found.");
@@ -59,116 +68,89 @@ class AddressBookUtility : IAddressBook
         Console.Write("Enter Email: ");
         person.Email = Console.ReadLine();
 
-        contacts.AddLast(person);
-        Console.WriteLine("\nContact added successfully!");
+        contacts[contactCount++] = person;
+        Console.WriteLine("Contact added successfully!");
     }
 
-    //UC-3 Edit existing contact using name
+    //UC-3 Edit Contact
     public void EditContact(string firstName)
     {
-        foreach (AddressBookModel person in contacts)
+        for (int i = 0; i < contactCount; i++)
         {
-            if (person.FirstName.Equals(firstName))
+            if (contacts[i].FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase))
             {
                 Console.Write("Enter Address: ");
-                person.Address = Console.ReadLine();
+                contacts[i].Address = Console.ReadLine();
 
-                Console.Write("Enter new city: ");
-                person.City = Console.ReadLine();
+                Console.Write("Enter City: ");
+                contacts[i].City = Console.ReadLine();
 
-                Console.Write("Enter New State: ");
-                person.State = Console.ReadLine();
+                Console.Write("Enter State: ");
+                contacts[i].State = Console.ReadLine();
 
-                Console.Write("Enter new zip: ");
-                person.Zip = Console.ReadLine();
+                Console.Write("Enter Zip: ");
+                contacts[i].Zip = Console.ReadLine();
 
-                Console.Write("Enter new Phone Number: ");
-                person.PhoneNumber = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter Phone Number: ");
+                contacts[i].PhoneNumber = Convert.ToInt32(Console.ReadLine());
 
                 Console.Write("Enter Email: ");
-                person.Email = Console.ReadLine();
+                contacts[i].Email = Console.ReadLine();
 
-                Console.WriteLine("Contact updated");
+                Console.WriteLine("Contact updated.");
                 return;
             }
         }
-        Console.WriteLine("Contact not found");
+        Console.WriteLine("Contact not found.");
     }
 
-    //UC-4 Delete contact using name
+    //UC-4 Delete Contact
     public void DeleteContact(string firstName)
     {
-        foreach (AdressBookModel person in contacts)
+        for (int i = 0; i < contactCount; i++)
         {
-            if (person.FirstName.Equals(firstName))
+            if (contacts[i].FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase))
             {
-                contacts.Remove(person);
-                Console.WriteLine("Contact deleted successfully");
+                for (int j = i; j < contactCount - 1; j++)
+                    contacts[j] = contacts[j + 1]; // shift left
+                contacts[--contactCount] = null;
+                Console.WriteLine("Contact deleted successfully.");
                 return;
             }
         }
-        Console.WriteLine("Contact not found");
+        Console.WriteLine("Contact not found.");
     }
 
-    // UC-5 Add Multiple Person using Array
+    //UC-5 Add Multiple Contacts
     public void AddMultipleContacts()
     {
-        Console.Write("How many person you want to add");
+        Console.Write("How many persons to add? ");
         int n = Convert.ToInt32(Console.ReadLine());
-
-        AddressBookModel[] arr = new AddressBookModel[n];
 
         for (int i = 0; i < n; i++)
         {
-            Console.WriteLine("Enter details for person: ");
-            AddressBookModel person = new AddressBookModel();
-
-            Console.Write("Enter First Name: ");
-            person.FirstName = Console.ReadLine();
-
-            Console.Write("Enter Last Name: ");
-            person.LastName = Console.ReadLine();
-
-            Console.Write("Enter Address: ");
-            person.Address = Console.ReadLine();
-
-            Console.Write("Enter City: ");
-            person.City = Console.ReadLine();
-
-            Console.Write("Enter State: ");
-            person.State = Console.ReadLine();
-
-            Console.Write("Enter Zip: ");
-            person.Zip = Console.ReadLine();
-
-            Console.Write("Enter Phone Number: ");
-            person.PhoneNumber = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Enter Email: ");
-            person.Email = Console.ReadLine();
-
-            arr[i] = person;
+            Console.WriteLine("\nEnter details for person " + (i + 1));
+            AddContact();
         }
-
-        foreach (AddressBookModel person in arr)
-        {
-            contacts.AddLast(person);
-        }
-
-        Console.WriteLine("Multiple contacts added");
     }
 
-    //UC-6 creating new AddressBook
+    //UC-6 Create Address Book
     public static AddressBookUtility CreateAddressBook()
     {
-        Console.Write("Enter unique Name: ");
+        if (bookCount >= maxBooks)
+        {
+            Console.WriteLine("Maximum address books reached.");
+            return null;
+        }
+
+        Console.Write("Enter unique Address Book name: ");
         string name = Console.ReadLine();
 
         for (int i = 0; i < bookCount; i++)
         {
-            if (addressBookNames[i].Equals(name))
+            if (addressBookNames[i].Equals(name, StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine("Address Book exists");
+                Console.WriteLine("Address Book already exists.");
                 return addressBooks[i];
             }
         }
@@ -177,155 +159,123 @@ class AddressBookUtility : IAddressBook
         addressBooks[bookCount] = new AddressBookUtility();
         bookCount++;
 
-        Console.WriteLine("Address Book created");
+        Console.WriteLine("Address Book created.");
         return addressBooks[bookCount - 1];
     }
 
-    //select address book which one to use
+    // UC-6 Select Address Book
     public static AddressBookUtility SelectAddressBook()
     {
-        Console.Write("Enter Book Name: ");
+        Console.Write("Enter Address Book name to select: ");
         string name = Console.ReadLine();
 
         for (int i = 0; i < bookCount; i++)
         {
-            if (addressBookNames[i].Equals(name))
+            if (addressBookNames[i].Equals(name, StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine("Address book selected");
+                Console.WriteLine("Address Book selected.");
                 return addressBooks[i];
             }
         }
 
-        Console.WriteLine("Address Book not found");
+        Console.WriteLine("Address Book not found.");
         return null;
     }
 
-    //UC-8 Search person by City or State across all Address Books
+    //UC-8 
     public static void SearchByCityOrState()
     {
-        if (bookCount == 0)
-        {
-            Console.WriteLine("No Address Books Available");
-            return;
-        }
-
         Console.Write("Enter City or State to search: ");
         string input = Console.ReadLine();
-
         bool found = false;
 
         for (int i = 0; i < bookCount; i++)
         {
             AddressBookUtility book = addressBooks[i];
-            foreach (AddressBookModel person in book.contacts)
+            for (int j = 0; j < book.contactCount; j++)
             {
-                if (person.City.Equals(input, StringComparison.OrdinalIgnoreCase) || person.State.Equals(input, StringComparison.OrdinalIgnoreCase))
+                AddressBookModel p = book.contacts[j];
+                if (p.City.Equals(input, StringComparison.OrdinalIgnoreCase) ||
+                    p.State.Equals(input, StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("Address Book: " + addressBookNames[i]);
-                    Console.WriteLine("Name: " + person.FirstName + " " + person.LastName);
-                    Console.WriteLine("Address: " + person.Address);
-                    Console.WriteLine("City: " + person.City);
-                    Console.WriteLine("State: " + person.State);
-                    Console.WriteLine("Zip: " + person.Zip);
-                    Console.WriteLine("Phone: " + person.Phone);
-                    Console.WriteLine("Email: " + person.Email);
+                    Console.WriteLine(
+                        "Address Book: " + addressBookNames[i] +
+                        " | " + p.FirstName + " " + p.LastName +
+                        ", " + p.City + ", " + p.State +
+                        ", " + p.PhoneNumber
+                    );
                     found = true;
                 }
             }
         }
+
         if (!found)
-        {
-            Console.WriteLine("No person found in the given city/state");
-        }
+            Console.WriteLine("No person found.");
     }
 
-    //UC-9 View Persons by City or State using Arrays
-    // UC-9: View Persons by City or State using only arrays
+    //UC-9 View Persons by City/State using arrays
     public static void ViewPersonsByCityOrState()
     {
-        if (bookCount == 0)
-        {
-            Console.WriteLine("No Address Books available.");
-            return;
-        }
-
         Console.WriteLine("View by: 1. City  2. State");
         int choice = Convert.ToInt32(Console.ReadLine());
 
-        // Step 1: Estimate maximum unique locations (worst case all contacts are unique)
+        // Collect unique locations
         int maxLocations = 0;
         for (int i = 0; i < bookCount; i++)
-        {
-            maxLocations += addressBooks[i].contacts.Count;
-        }
+            maxLocations += addressBooks[i].contactCount;
 
         string[] uniqueLocations = new string[maxLocations];
         int uniqueCount = 0;
 
-        // Step 2: Collect unique cities or states
         for (int i = 0; i < bookCount; i++)
         {
             AddressBookUtility book = addressBooks[i];
-            foreach (AddressBookModel person in book.contacts)
+            for (int j = 0; j < book.contactCount; j++)
             {
-                string key = choice == 1 ? person.City : person.State;
-
-                // Check if already added
+                string key = choice == 1 ? book.contacts[j].City : book.contacts[j].State;
                 bool exists = false;
-                for (int j = 0; j < uniqueCount; j++)
+                for (int k = 0; k < uniqueCount; k++)
                 {
-                    if (uniqueLocations[j].Equals(key, StringComparison.OrdinalIgnoreCase))
+                    if (uniqueLocations[k].Equals(key, StringComparison.OrdinalIgnoreCase))
                     {
                         exists = true;
                         break;
                     }
                 }
-
                 if (!exists)
-                {
-                    uniqueLocations[uniqueCount] = key;
-                    uniqueCount++;
-                }
+                    uniqueLocations[uniqueCount++] = key;
             }
         }
 
-        // Step 3: For each unique location, list persons
+        // Print persons for each location
         for (int i = 0; i < uniqueCount; i++)
         {
-            string location = uniqueLocations[i];
-            Console.WriteLine($"\n{(choice == 1 ? "City" : "State")}: {location}");
+            string loc = uniqueLocations[i];
+            Console.WriteLine("\n" + (choice == 1 ? "City: " : "State: ") + loc);
 
             for (int j = 0; j < bookCount; j++)
             {
                 AddressBookUtility book = addressBooks[j];
-                foreach (AddressBookModel person in book.contacts)
+                for (int k = 0; k < book.contactCount; k++)
                 {
-                    string key = choice == 1 ? person.City : person.State;
-                    if (key.Equals(location, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine($"- {person.FirstName} {person.LastName} (Address Book: {addressBookNames[j]})");
-                    }
+                    AddressBookModel p = book.contacts[k];
+                    string key = choice == 1 ? p.City : p.State;
+                    if (key.Equals(loc, StringComparison.OrdinalIgnoreCase))
+                        Console.WriteLine("- " + p.FirstName + " " + p.LastName + " (Book: " + addressBookNames[j] + ")");
                 }
             }
         }
     }
 
-    // UC-10: Count number of persons by City or State using arrays
+    // UC-10 Count Contacts by City/State
     public static void CountContactsByCityOrState()
     {
-        if (bookCount == 0)
-        {
-            Console.WriteLine("No Address Books available.");
-            return;
-        }
-
-        Console.WriteLine("Count contacts by: 1. City  2. State");
+        Console.WriteLine("Count by: 1. City  2. State");
         int choice = Convert.ToInt32(Console.ReadLine());
 
-        // Step 1: Collect unique locations
         int maxLocations = 0;
         for (int i = 0; i < bookCount; i++)
-            maxLocations += addressBooks[i].contacts.Count;
+            maxLocations += addressBooks[i].contactCount;
 
         string[] uniqueLocations = new string[maxLocations];
         int uniqueCount = 0;
@@ -333,49 +283,64 @@ class AddressBookUtility : IAddressBook
         for (int i = 0; i < bookCount; i++)
         {
             AddressBookUtility book = addressBooks[i];
-            foreach (AddressBookModel person in book.contacts)
+            for (int j = 0; j < book.contactCount; j++)
             {
-                string key = choice == 1 ? person.City : person.State;
-
-                // Check if already in uniqueLocations
+                string key = choice == 1 ? book.contacts[j].City : book.contacts[j].State;
                 bool exists = false;
-                for (int j = 0; j < uniqueCount; j++)
+                for (int k = 0; k < uniqueCount; k++)
                 {
-                    if (uniqueLocations[j].Equals(key, StringComparison.OrdinalIgnoreCase))
+                    if (uniqueLocations[k].Equals(key, StringComparison.OrdinalIgnoreCase))
                     {
                         exists = true;
                         break;
                     }
                 }
-
                 if (!exists)
-                {
-                    uniqueLocations[uniqueCount] = key;
-                    uniqueCount++;
-                }
+                    uniqueLocations[uniqueCount++] = key;
             }
         }
 
-        // Step 2: Count contacts for each unique location
         for (int i = 0; i < uniqueCount; i++)
         {
-            string location = uniqueLocations[i];
+            string loc = uniqueLocations[i];
             int count = 0;
 
             for (int j = 0; j < bookCount; j++)
             {
                 AddressBookUtility book = addressBooks[j];
-                foreach (AddressBookModel person in book.contacts)
+                for (int k = 0; k < book.contactCount; k++)
                 {
-                    string key = choice == 1 ? person.City : person.State;
-                    if (key.Equals(location, StringComparison.OrdinalIgnoreCase))
-                    {
+                    string key = choice == 1 ? book.contacts[k].City : book.contacts[k].State;
+                    if (key.Equals(loc, StringComparison.OrdinalIgnoreCase))
                         count++;
-                    }
                 }
             }
 
-            Console.WriteLine($"{(choice == 1 ? "City" : "State")}: {location}  => Number of Persons: {count}");
+            Console.WriteLine((choice == 1 ? "City: " : "State: ") + loc + " => " + count + " persons");
         }
+    }
+
+    // UC-11 Sort Contacts by Name
+    public void SortContactsByName()
+    {
+        for (int i = 0; i < contactCount - 1; i++)
+        {
+            for (int j = 0; j < contactCount - i - 1; j++)
+            {
+                string name1 = contacts[j].FirstName + " " + contacts[j].LastName;
+                string name2 = contacts[j + 1].FirstName + " " + contacts[j + 1].LastName;
+
+                if (string.Compare(name1, name2, StringComparison.OrdinalIgnoreCase) > 0)
+                {
+                    AddressBookModel temp = contacts[j];
+                    contacts[j] = contacts[j + 1];
+                    contacts[j + 1] = temp;
+                }
+            }
+        }
+
+        Console.WriteLine("\nContacts sorted alphabetically:");
+        for (int i = 0; i < contactCount; i++)
+            Console.WriteLine(contacts[i].FirstName + " " + contacts[i].LastName + " | " + contacts[i].Address + ", " + contacts[i].City + ", " + contacts[i].State + " | " + contacts[i].PhoneNumber + " | " + contacts[i].Email);
     }
 }
