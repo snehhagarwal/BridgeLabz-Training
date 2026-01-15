@@ -13,7 +13,8 @@ class AddressBookMenu
             Console.WriteLine("1. Add Contact");
             Console.WriteLine("2. Delete Contact");
             Console.WriteLine("3. Edit Contact");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Add Multiple Contacts");
+            Console.WriteLine("5. Exit");
             Console.Write("Enter choice");
 
             choice=Convert.ToInt32(Console.ReadLine());
@@ -34,6 +35,9 @@ class AddressBookMenu
                     utility.DeleteContact(delete);
                     break;
                 case 4:
+                    utility.AddMultipleContacts();
+                    break;
+                case 5:
                     Console.WriteLine("Exit the program");
                     break;
                 default:
