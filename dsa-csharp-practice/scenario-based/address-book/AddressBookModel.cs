@@ -19,4 +19,21 @@ public class AddressBookModel
     public string Zip { get { return zip; } set { zip = value; } }
     public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
     public string Email { get { return email; } set { email = value; } }
+
+    // UC-7 Duplicate Check based on Name
+    public override bool Equals(object obj)
+    {
+        if (obj == null || !(obj is AddressBookModel))
+        {
+            return false;
+        }
+
+        AddressBookModel other=(AddressBookModel)obj;
+        return this.FirstName.Equals(other.FirstName) && this.LastName.Equals(other.LastName);
+    }
+
+    public override string ToString()
+    {
+        return FirstName + " " + LastName + ", " + City + ", " + State + ", " + PhoneNumber;
+    }
 }
