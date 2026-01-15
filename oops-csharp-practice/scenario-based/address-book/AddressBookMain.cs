@@ -6,7 +6,5 @@ class AddressBookMain
     {
         //UC-0 Display welcome message in main
         Console.WriteLine("Welcome to Address Book Program");
-        Menu menu = new Menu();
-        menu.Start();   // Call menu from main
     }
 }
