@@ -10,6 +10,19 @@ class AddressBookUtility : IAddressBook
     private static int bookCount=0;
     private LinkedList<AddressBookModel> contacts = new LinkedList<AddressBookModel>();
 
+    //UC-7 Duplicate Check
+    private bool IsDuplicate(AddressBookModel person)
+    {
+        foreach(AddressBookModel existing in contacts)
+        {
+            if (existing.Equals(person))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //UC-2 Add A New Contact
     public void AddContact()
     {
@@ -20,6 +33,13 @@ class AddressBookUtility : IAddressBook
 
         Console.Write("Enter Last Name: ");
         person.LastName = Console.ReadLine();
+
+        //UC-7 Check
+        if (IsDuplicate(person))
+        {
+            Console.WriteLine("Duplicate contact found.");
+            return;
+        }
 
         Console.Write("Enter Address: ");
         person.Address = Console.ReadLine();
