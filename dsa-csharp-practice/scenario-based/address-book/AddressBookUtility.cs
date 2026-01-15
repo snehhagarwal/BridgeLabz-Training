@@ -200,4 +200,43 @@ class AddressBookUtility : IAddressBook
         return null;
     }
 
+    //UC-8 Search person by City or State across all Address Books
+    public static void SearchByCityOrState()
+    {
+        if (bookCount == 0)
+        {
+            Console.WriteLine("No Address Books Available");
+            return;
+        }
+
+        Console.Write("Enter City or State to search: ");
+        string input=Console.ReadLine();
+
+        bool found=false;
+
+        for(int i = 0; i < bookCount; i++)
+        {
+            AddressBookUtility book=addressBooks[i];
+            foreach(AddressBookModel person in book.contacts)
+            {
+                if(person.City.Equals(input,StringComparison.OrdinalIgnoreCase) || person.State.Equals(input, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Address Book: " + addressBookNames[i]);
+                    Console.WriteLine("Name: " + person.FirstName + " " + person.LastName);
+                    Console.WriteLine("Address: " + person.Address);
+                    Console.WriteLine("City: " + person.City);
+                    Console.WriteLine("State: " + person.State);
+                    Console.WriteLine("Zip: " + person.Zip);
+                    Console.WriteLine("Phone: " + person.Phone);
+                    Console.WriteLine("Email: " + person.Email);
+                    found=true;
+                }
+            }
+        }
+        if (!found)
+        {
+            Console.WriteLine("No person found in the given city/state");
+        }
+    }
+
 }
