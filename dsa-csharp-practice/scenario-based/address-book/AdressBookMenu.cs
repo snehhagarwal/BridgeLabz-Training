@@ -18,7 +18,8 @@ class AddressBookMenu
             Console.WriteLine("4. Add Multiple Contacts");
             Console.WriteLine("5. Edit Contact");
             Console.WriteLine("6. Delete Contact");
-            Console.WriteLine("7. Exit");
+            Console.WriteLine("7. Search Person by City/State");
+            Console.WriteLine("8. Exit");
             Console.Write("Enter choice: ");
 
             choice = Convert.ToInt32(Console.ReadLine());
@@ -66,8 +67,13 @@ class AddressBookMenu
                     break;
 
                 case 7:
+                    AddressBookUtility.SearchByCityOrState();
+                    break;
+
+                case 8:
                     Console.WriteLine("Exit the program");
                     break;
+                    
                 default:
                     Console.WriteLine("Invalid Choice");
                     break;
