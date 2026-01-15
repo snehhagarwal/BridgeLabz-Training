@@ -6,7 +6,7 @@ class AddressBookMenu
     {
         //before uc-4 used
         // IAddressBook utility=new AddressBookUtility();
-        AddressBookUtility curr = null;
+        AddressBookUtility currentBook = null;
         int choice;
 
         do
@@ -21,7 +21,8 @@ class AddressBookMenu
             Console.WriteLine("7. Search Person by City/State");
             Console.WriteLine("8. View Persons by City/State");
             Console.WriteLine("9. Count Contacts by City/State");
-            Console.WriteLine("10. Exit");
+            Console.WriteLine("10. Sort Contacts by Name"); 
+            Console.WriteLine("11. Exit");
             Console.Write("Enter choice: ");
 
             choice = Convert.ToInt32(Console.ReadLine());
@@ -77,10 +78,17 @@ class AddressBookMenu
                     break;
 
                 case 9:
-                    AddressBookUtility.CountByCityOrState();
+                    AddressBookUtility.CountContactsByCityOrState();
                     break;
-                    
+
                 case 10:
+                    if (currentBook != null)
+                        currentBook.SortContactsByName();
+                    else
+                        Console.WriteLine("Please create/select an Address Book first.");
+                    break;
+
+                case 11:
                     Console.WriteLine("Exit the program");
                     break;
 
@@ -89,6 +97,6 @@ class AddressBookMenu
                     break;
             }
 
-        } while (choice != 4);
+        } while (choice != 11);
     }
 }
