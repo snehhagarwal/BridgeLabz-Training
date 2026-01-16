@@ -7,7 +7,7 @@ public class AddressBookModel
     private string city;
     private string state;
     private string zip;
-    private int phoneNumber;
+    private string phoneNumber;
     private string email;
 
     //public properties
@@ -17,7 +17,7 @@ public class AddressBookModel
     public string City { get { return city; } set { city = value; } }
     public string State { get { return state; } set { state = value; } }
     public string Zip { get { return zip; } set { zip = value; } }
-    public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
+    public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
     public string Email { get { return email; } set { email = value; } }
 
     // UC-7 Duplicate Check based on Name
