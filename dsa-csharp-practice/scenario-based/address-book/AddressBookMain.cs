@@ -6,7 +6,7 @@ class AddressBookMain
     {
         Console.WriteLine("Welcome to Address Book Program");
 
-        Menu menu=new Menu();
+        AddressBookMenu menu=new AddressBookMenu();
         menu.Start();
 
         Console.ReadLine();
