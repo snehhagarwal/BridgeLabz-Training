@@ -21,7 +21,7 @@ class AddressBookMenu
             Console.WriteLine("7. Search Person by City/State");
             Console.WriteLine("8. View Persons by City/State");
             Console.WriteLine("9. Count Contacts by City/State");
-            Console.WriteLine("10. Sort Contacts by Name"); 
+            Console.WriteLine("10. Sort Contacts by Name");
             Console.WriteLine("11. Exit");
             Console.Write("Enter choice: ");
 
@@ -61,12 +61,26 @@ class AddressBookMenu
 
                 case 5:
                     Console.Write("Enter First Name: ");
-                    currentBook?.EditContact(Console.ReadLine());
+                    if (currentBook != null)
+                    {
+                        currentBook.EditContact(Console.ReadLine());
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Address Book found.");
+                    }
                     break;
 
                 case 6:
                     Console.Write("Enter First Name: ");
-                    currentBook?.DeleteContact(Console.ReadLine());
+                    if (currentBook != null)
+                    {
+                        currentBook.DeleteContact(Console.ReadLine());
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Address Book found.");
+                    }
                     break;
 
                 case 7:
