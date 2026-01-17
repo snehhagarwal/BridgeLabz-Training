@@ -2,13 +2,14 @@ using System;
 
 class FlashMenu
 {
-    private IFlashDealz service;
+    private IFlashDealz service; // interface reference
 
     public FlashMenu(IFlashDealz service)
     {
         this.service=service;
     }
 
+    // displays menu
     public void ShowMenu()
     {
         int choice;

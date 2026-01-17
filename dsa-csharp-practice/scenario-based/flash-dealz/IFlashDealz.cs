@@ -1,6 +1,8 @@
+// Defines core operations
 interface IFlashDealz
 {
-    void AddProduct();
-    void SortProduct();
-    void Display();
+    void AddProduct();  // add product
+    void SortProduct();  // sort discounts
+    void Display();      // display list
+
 }

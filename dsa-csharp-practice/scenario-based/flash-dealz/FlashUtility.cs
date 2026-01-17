@@ -4,9 +4,10 @@ using System.Collections.Concurrent;
 class FlashUtility : IFlashDealz
 {
     int n=Convert.ToInt32(Console.ReadLine());
-    private Product[] products=new Product[n];
-    private int count=0;
+    private Product[] products=new Product[n];  // product storage
+    private int count=0;                        // product count
 
+    // add new product
     public void AddProduct()
     {
         Console.Write("Enter Product name: ");
@@ -19,12 +20,14 @@ class FlashUtility : IFlashDealz
         Console.WriteLine("Product added");
     }
 
+    // sort using quicksort
     public void SortProducts()
     {
         QuickSort(products,0,count-1);
         Console.WriteLine("Products sorted");
     }
 
+    // display all products
     public void Display()
     {
         if (count == 0)
@@ -40,6 +43,7 @@ class FlashUtility : IFlashDealz
         }
     }
 
+    // quick sort algorithm
     private void QuickSort(Product[] arr,int low,int high)
     {
         if (low < high)
@@ -50,6 +54,7 @@ class FlashUtility : IFlashDealz
         }
     }
 
+    // partition logic
     private int Partition(Product[] arr,int low,int high)
     {
         int pivot=arr[high].GetDiscount();
@@ -68,6 +73,7 @@ class FlashUtility : IFlashDealz
         return i+1;
     }
 
+    // swap elements
     private void Swap(Product[] arr,int i,int j)
     {
         Product temp=arr[i];
