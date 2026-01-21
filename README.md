@@ -229,7 +229,7 @@ Each entry includes concepts covered and skills practiced.
 - Improved modular and structured coding approach ⚙️                                                                
 - Practice & Scenario-Based Assignments:Metal Custom Manufacturing System, Implemented loan eligibility check, Displayed approval or rejection report 🔑                  
 
---
+---
 
 ## Day 23: January 13, 2026 - Searching Algorithms & Scenario-Based Applications 📅                                                               
 **Topic:** Linear Search, Binary Search & Search-Based Systems 🔍📚                                                                      
