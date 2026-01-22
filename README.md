@@ -35,7 +35,7 @@ Each entry includes concepts covered and skills practiced.
 
 ---
 
-## Day 4: December 19, 2025 – Introduction to Basics of C# 💻     
+## Day 4: December 20, 2025 – Introduction to Basics of C# 💻     
 **Topic:**  Operators, Data Types, Type Conversion & Memory Concepts 🔧   
 **What I Learnt:** 📚        
 - Gained understanding of C# program execution and memory areas. 🧠     
@@ -208,7 +208,7 @@ Each entry includes concepts covered and skills practiced.
 
 ---
 
-## Day 21: January 9, 2026 - Stack & Queue Concepts 📅                                                    
+## Day 19: January 9, 2026 - Stack & Queue Concepts 📅                                                    
 **Topic:** Understanding Stack & Queue Data Structures 🧱📥                                                              
 **What I Learnt:** 📚                                                                                                                                                       
 - Understood the concept of Stack (LIFO – Last In First Out) 🧵                                                              
@@ -220,7 +220,7 @@ Each entry includes concepts covered and skills practiced.
 
 ---
 
-## Day 22: January 12, 2026- Scenario-Based Programming 📅                                                                                   
+## Day 20: January 12, 2026- Scenario-Based Programming 📅                                                                                   
 **Topic:** Real-World Problem Solving Using OOP 🏭💰                                                                                     
 **What I Learnt:** 📚                                                                     
 - Implemented scenario-based programs using OOP concepts 📏                                                                
@@ -229,12 +229,92 @@ Each entry includes concepts covered and skills practiced.
 - Improved modular and structured coding approach ⚙️                                                                
 - Practice & Scenario-Based Assignments:Metal Custom Manufacturing System, Implemented loan eligibility check, Displayed approval or rejection report 🔑                  
 
----
+--
 
-## Day 23: January 13, 2026 - Searching Algorithms & Scenario-Based Applications 📅                                                               
+## Day 21: January 13, 2026 - Searching Algorithms & Scenario-Based Applications 📅                                                               
 **Topic:** Linear Search, Binary Search & Search-Based Systems 🔍📚                                                                      
 **What I Learnt:** 📚                                                                
 - Learned Linear Search algorithm 🌳                                         
 - Learned Binary Search algorithm 🌐                                                          
 - Understood time complexity basics for searching techniques 🧵                                                                           
-- Practice & Scenario-Based Assignments:Implemented Linear Search program, Implemented Binary Search program, Bookshelf Management System, Movie Scheduler System 📦
+- Practice & Scenario-Based Assignments:Implemented Linear Search program, Implemented Binary Search program, Bookshelf Management System, Movie Scheduler System 📦                                             
+
+---
+
+## Day 22: January 14, 2026 – Runtime Analysis & Big-O Notation 📅
+**Topic:** Algorithm Analysis & Code Optimization ⏱️📊
+**What I Learnt:** 📚
+- Understood What is Runtime Analysis and why it is important in real-world applications 🧠
+- Learned Big-O Notation and its role in measuring algorithm efficiency 📈
+- Studied Time Complexity Analysis for different algorithms ⏳
+- Learned Space Complexity Analysis and memory usage considerations 💾
+- Understood Best Case, Worst Case, and Average Case complexities 🔍
+- Learned practical guidelines for optimizing C# code such as reducing loops, choosing efficient data structures, and avoiding redundant computations ⚙️
+- Practice & Scenario-Based Assignments: Analyzed runtime and space complexity of the Address Book System 🏠
+
+---
+
+## Day 23: January 15, 2026 – Browser Buddy Runtime Analysis 📅
+**Topic:** Algorithm Runtime Analysis on Real-World Application 🌐
+**What I Learnt:** 📚
+- Applied runtime analysis concepts to a browser-based system 🧠
+- Compared different searching and sorting approaches used in applications 🔍
+- Understood how frequent user interactions affect performance ⚡
+- Practice & Scenario-Based Assignments: Browser Buddy Application, Evaluated bookmark lookup efficiency and studied browser history search optimization 💾
+
+--- 
+
+## Day 24: January 16, 2026 – Scenario-Based Systems & Analysis 📅
+**Topic:** Algorithm Application & Performance Comparison 🚦📚
+**What I Learnt:** 📚
+- Strengthened understanding of algorithm selection based on use case 🧩
+- Compared runtime efficiency of multiple algorithms 🧠
+- Applied searching and sorting concepts in different scenarios ⚙️
+- Practice & Scenario-Based Assignments: Traffic Manager System, Bookshelf Management System 📚
+- Solved daily scenario-based questions focusing on algorithm comparison and optimization 📊
+
+--- 
+
+ ## Day 25 — January 17, 2026 — Scenario-Based Applications & Algorithm Practice📅
+**Topic:** Flash Deals, Fitness Tracker & Algorithm Practice 💻📊
+ **What I Learned:** 📚
+- Solved scenario-based problems using C# and OOPS concepts ✅
+- Practiced algorithms and sorting techniques 📊
+- Strengthened logical thinking and problem-solving skills🔍
+- Applied real-world scenarios to code design
+- Practice & Scenario-Based Assignments: Flash Deals System, Fitness Tracker Application 🏃
+- Solved daily scenario-based questions focusing on algorithm usage and optimization ⚙️
+
+---
+
+## Day 26 — January 19, 2026 — Generics & Scenario-Based Systems 📅
+**Topic:** Generics in C#, Parcel Tracker & Exam Proctor 🧠📦
+**What I Learned:** 📚
+- Learned Generics in C# and their benefits 🏃
+- Implemented type-safe reusable classes and methods 💾
+- Understood how generics improve scalability and performance 🧩
+- Practice & Scenario-Based Assignments: Parcel Tracker System, Exam Proctor System ⚙️
+- Practiced daily scenario-based questions using generic programming concepts 🧠
+
+---
+
+ ## Day 27 — January 20, 2026 — Collections, Sorting & Backtracking
+**Topic:** Collections, Radix Sort, Backtracking & Advanced Scenarios 🔁📚
+**What I Learned:** 📚
+- Learned Collections framework in C# 🏃
+- Understood Radix Sort and its use for large numeric data 🔍
+- Learned Backtracking technique and its applications ✅
+- Analyzed time and space complexity of recursive solutions ⚙️
+-  Practice & Scenario-Based Assignments: Sorting Aadhar Numbers using Radix Sort, Password Cracker Simulator (Backtracking) 🧩
+
+---
+
+## Day 28 — January 21, 2026 — Advanced Sorting & Queue-Based Systems
+**Topic:** Merge Sort, Queue & HashMap Applications 🧮🛒
+**What I Learned:** 📚
+- Deep understanding of Merge Sort and its stability 🧠
+- Learned merging of multiple sorted sublists ✅
+- Used Queue and HashMap together for real-time systems 🔍
+- Practice & Scenario-Based Assignments: EduResults – Rank Sheet Generator (Merge Sort),  SmartCheckout – Supermarket Billing Queue (Queue + HashMap) 💾
+
+---
