@@ -8,10 +8,10 @@
            USE database_name;
   ========================================================= */
 
-CREATE DATABASE CollegeDB;
+CREATE DATABASE UniversityDB;
 GO
 
-USE CollegeDB;
+USE UniversityDB;
 GO
 
 
@@ -25,10 +25,10 @@ GO
            DROP TABLE IF EXISTS table_name;
   ========================================================= */
 
-DROP TABLE IF EXISTS Enrollments;
-DROP TABLE IF EXISTS Students;
-DROP TABLE IF EXISTS Courses;
-DROP TABLE IF EXISTS Departments;
+DROP TABLE IF EXISTS Registrations;
+DROP TABLE IF EXISTS Learners;
+DROP TABLE IF EXISTS Subjects;
+DROP TABLE IF EXISTS Divisions;
 GO
 
 
@@ -47,9 +47,9 @@ GO
            column datatype UNIQUE;
   ========================================================= */
 
-CREATE TABLE Departments (
-    DeptID INT PRIMARY KEY,
-    DeptName VARCHAR(50) UNIQUE NOT NULL
+CREATE TABLE Divisions (
+    DivisionID INT PRIMARY KEY,
+    DivisionTitle VARCHAR(50) UNIQUE NOT NULL
 );
 GO
 
@@ -62,12 +62,12 @@ GO
            REFERENCES parent_table(column);
   ========================================================= */
 
-CREATE TABLE Students (
-    StudentID INT PRIMARY KEY,
-    StudentName VARCHAR(50) NOT NULL,
-    Email VARCHAR(100) UNIQUE,
-    DeptID INT,
-    FOREIGN KEY (DeptID) REFERENCES Departments(DeptID)
+CREATE TABLE Learners (
+    LearnerID INT PRIMARY KEY,
+    LearnerFullName VARCHAR(50) NOT NULL,
+    ContactEmail VARCHAR(100) UNIQUE,
+    DivisionID INT,
+    FOREIGN KEY (DivisionID) REFERENCES Divisions(DivisionID)
 );
 GO
 
@@ -76,11 +76,11 @@ GO
    CREATE TABLE : Courses (DDL)
   ========================================================= */
 
-CREATE TABLE Courses (
-    CourseID INT PRIMARY KEY,
-    CourseName VARCHAR(50) NOT NULL,
-    DeptID INT,
-    FOREIGN KEY (DeptID) REFERENCES Departments(DeptID)
+CREATE TABLE Subjects (
+    SubjectID INT PRIMARY KEY,
+    SubjectTitle VARCHAR(50) NOT NULL,
+    DivisionID INT,
+    FOREIGN KEY (DivisionID) REFERENCES Divisions(DivisionID)
 );
 GO
 
@@ -92,13 +92,13 @@ GO
            PRIMARY KEY (column1, column2);
   ========================================================= */
 
-CREATE TABLE Enrollments (
-    StudentID INT,
-    CourseID INT,
-    Semester VARCHAR(20),
-    PRIMARY KEY (StudentID, CourseID),
-    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
-    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+CREATE TABLE Registrations (
+    LearnerID INT,
+    SubjectID INT,
+    Term VARCHAR(20),
+    PRIMARY KEY (LearnerID, SubjectID),
+    FOREIGN KEY (LearnerID) REFERENCES Learners(LearnerID),
+    FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
 );
 GO
 
@@ -114,26 +114,26 @@ GO
            VALUES (...);
   ========================================================= */
 
-INSERT INTO Departments VALUES
-(1, 'Computer Science'),
-(2, 'Mechanical'),
-(3, 'Electrical');
+INSERT INTO Divisions VALUES
+(10, 'Information Technology'),
+(20, 'Civil'),
+(30, 'Electronics');
 
-INSERT INTO Students VALUES
-(101, 'Lavanya', 'lavanya@gmail.com', 1),
-(102, 'Khushi', 'khushi@gmail.com', 1),
-(103, 'Roshni', 'roshni@gmail.com', 2);
+INSERT INTO Learners VALUES
+(501, 'Aman Verma', 'aman@gmail.com', 10),
+(502, 'Pooja Shah', 'pooja@gmail.com', 10),
+(503, 'Rahul Mehta', 'rahul@gmail.com', 20);
 
-INSERT INTO Courses VALUES
-(201, 'DBMS', 1),
-(202, 'Operating Systems', 1),
-(203, 'Thermodynamics', 2);
+INSERT INTO Subjects VALUES
+(301, 'Computer Networks', 10),
+(302, 'Software Engineering', 10),
+(303, 'Structural Design', 20);
 
-INSERT INTO Enrollments VALUES
-(101, 201, 'Sem 1'),
-(101, 202, 'Sem 1'),
-(102, 201, 'Sem 1'),
-(103, 203, 'Sem 1');
+INSERT INTO Registrations VALUES
+(501, 301, 'Term 1'),
+(501, 302, 'Term 1'),
+(502, 301, 'Term 1'),
+(503, 303, 'Term 1');
 GO
 
 
@@ -155,13 +155,13 @@ GO
            GROUP BY column;
   ========================================================= */
 
-SELECT * FROM Students;
-SELECT * FROM Students WHERE DeptID = 1;
-SELECT * FROM Students ORDER BY StudentName;
+SELECT * FROM Learners;
+SELECT * FROM Learners WHERE DivisionID = 10;
+SELECT * FROM Learners ORDER BY LearnerFullName;
 
-SELECT DeptID, COUNT(*) AS TotalStudents
-FROM Students
-GROUP BY DeptID;
+SELECT DivisionID, COUNT(*) AS TotalLearners
+FROM Learners
+GROUP BY DivisionID;
 GO
 
 
@@ -175,14 +175,14 @@ GO
         -- LEFT JOIN / RIGHT JOIN / FULL JOIN
   ========================================================= */
 
-SELECT s.StudentName, c.CourseName
-FROM Students s
-INNER JOIN Enrollments e ON s.StudentID = e.StudentID
-INNER JOIN Courses c ON e.CourseID = c.CourseID;
+SELECT l.LearnerFullName, s.SubjectTitle
+FROM Learners l
+INNER JOIN Registrations r ON l.LearnerID = r.LearnerID
+INNER JOIN Subjects s ON r.SubjectID = s.SubjectID;
 
-SELECT s.StudentName, e.CourseID
-FROM Students s
-LEFT JOIN Enrollments e ON s.StudentID = e.StudentID;
+SELECT l.LearnerFullName, r.SubjectID
+FROM Learners l
+LEFT JOIN Registrations r ON l.LearnerID = r.LearnerID;
 GO
 
 
@@ -196,12 +196,12 @@ GO
            DELETE FROM table_name WHERE condition;
   ========================================================= */
 
-UPDATE Students
-SET Email = 'sneha_new@gmail.com'
-WHERE StudentID = 101;
+UPDATE Learners
+SET ContactEmail = 'aman_new@gmail.com'
+WHERE LearnerID = 501;
 
-DELETE FROM Enrollments
-WHERE StudentID = 102 AND CourseID = 201;
+DELETE FROM Registrations
+WHERE LearnerID = 502 AND SubjectID = 301;
 GO
 
 
@@ -219,11 +219,11 @@ GO
   ========================================================= */
 
 BEGIN TRANSACTION;
-INSERT INTO Students VALUES (104, 'David', 'david@gmail.com', 3);
+INSERT INTO Learners VALUES (504, 'Neha Kapoor', 'neha@gmail.com', 30);
 ROLLBACK;
 
 BEGIN TRANSACTION;
-INSERT INTO Students VALUES (105, 'Eva', 'eva@gmail.com', 2);
+INSERT INTO Learners VALUES (505, 'Karan Malhotra', 'karan@gmail.com', 20);
 COMMIT;
 GO
 
@@ -237,24 +237,24 @@ GO
         -- BCNF: Every determinant is a key
   ========================================================= */
 
-CREATE TABLE Student_1NF (
-    StudentID INT,
-    StudentName VARCHAR(50),
-    Course VARCHAR(50)
+CREATE TABLE Learner_1NF (
+    LearnerID INT,
+    LearnerName VARCHAR(50),
+    Subject VARCHAR(50)
 );
 
-CREATE TABLE Student_2NF (
-    StudentID INT PRIMARY KEY,
-    StudentName VARCHAR(50)
+CREATE TABLE Learner_2NF (
+    LearnerID INT PRIMARY KEY,
+    LearnerName VARCHAR(50)
 );
 
-CREATE TABLE Department_3NF (
-    DeptID INT PRIMARY KEY,
-    DeptName VARCHAR(50)
+CREATE TABLE Division_3NF (
+    DivisionID INT PRIMARY KEY,
+    DivisionTitle VARCHAR(50)
 );
 
-CREATE TABLE Teacher_Subject_BCNF (
-    Teacher VARCHAR(50) PRIMARY KEY,
+CREATE TABLE Instructor_Subject_BCNF (
+    Instructor VARCHAR(50) PRIMARY KEY,
     Subject VARCHAR(50)
 );
 GO
