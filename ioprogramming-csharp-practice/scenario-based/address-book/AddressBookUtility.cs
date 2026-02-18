@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 
 
 // Utility class implementing interface
@@ -18,6 +21,9 @@ public class AddressBookUtility : IAddressBook
     private static string textFilePath = "AddressBook.txt";
     //UC-14
     private static string csvFilePath = "AddressBook.csv";
+    //UC-15
+    private static string jsonFilePath = "AddressBook.json";
+
 
     // UC-6 : Multiple Address Books
     private static List<AddressBookUtility> addressBooks = new List<AddressBookUtility>();
@@ -454,7 +460,8 @@ public class AddressBookUtility : IAddressBook
         }
     }
     //UC14
-        public void WriteContactsToCsvFile(){
+    public void WriteContactsToCsvFile()
+    {
         try
         {
             using (var writer = new StreamWriter(csvFilePath))
@@ -493,23 +500,60 @@ public class AddressBookUtility : IAddressBook
             Console.WriteLine(ex.Message);
         }
     }
-
-
-
-
-
-        // Display
-        private void DisplayContacts()
+    //UC-15
+    public void WriteContactsToJsonFile()
+    {
+        try
         {
-            foreach (var contact in contacts)
+            var options = new JsonSerializerOptions
             {
-                Console.WriteLine(contact);
-            }
+                WriteIndented = true   // pretty JSON
+            };
+
+            string jsonData =
+                JsonSerializer.Serialize(contacts, options);
+
+            File.WriteAllText(jsonFilePath, jsonData);
+
+            Console.WriteLine("Contacts written to JSON successfully!");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    public void ReadContactsFromJsonFile()
+    {
+        try
+        {
+            if (!File.Exists(jsonFilePath))
+            {
+                Console.WriteLine("JSON file not found.");
+                return;
+            }
 
+            string jsonData = File.ReadAllText(jsonFilePath);
 
-    private void DisplayContacts(
-        List<AddressBookModel> list)
+            contacts =
+                JsonSerializer.Deserialize<List<AddressBookModel>>(jsonData);
+
+            Console.WriteLine("Contacts read from JSON successfully!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    // Display
+    private void DisplayContacts()
+    {
+        foreach (var contact in contacts)
+        {
+            Console.WriteLine(contact);
+        }
+    }
+
+    private void DisplayContacts(List<AddressBookModel> list)
     {
         foreach (var contact in list)
         {
