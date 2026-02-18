@@ -1,6 +1,5 @@
 using System;
-namespace AddressBookSystem
-{
+
 // Thrown when a duplicate contact is added (UC-2)
 public class DuplicateContactException : Exception{
     public DuplicateContactException(string message) : base(message){}
@@ -19,5 +18,4 @@ public class InvalidMenuChoiceException : Exception{
 // Thrown when required input is empty
 public class EmptyInputException : Exception{
     public EmptyInputException(string message) : base(message){}
-}
 }
