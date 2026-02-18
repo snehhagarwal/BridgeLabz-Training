@@ -1,39 +1,26 @@
-public class AddressBookModel
-{
-    //private fields 
-    private string address;
-    private string firstName;
-    private string lastName;
-    private string city;
-    private string state;
-    private string zip;
-    private string phoneNumber;
-    private string email;
-
-    //public properties
-    public string FirstName { get { return firstName; } set { firstName = value; } }
-    public string LastName { get { return lastName; } set { lastName = value; } }
-    public string Address { get { return address; } set { address = value; } }
-    public string City { get { return city; } set { city = value; } }
-    public string State { get { return state; } set { state = value; } }
-    public string Zip { get { return zip; } set { zip = value; } }
-    public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
-    public string Email { get { return email; } set { email = value; } }
-
-    // UC-7 Duplicate Check based on Name
-    public override bool Equals(object obj)
-    {
-        if (obj == null || !(obj is AddressBookModel))
-        {
+using System;
+// encapsulation
+public class AddressBookModel{
+    public string FirstName;
+    public string LastName;
+    public string Address;
+    public string City;
+    public string State;
+    public string Zip;
+    public string PhoneNumber;
+    public string Email;
+    // UC-0 Welcome Message variable
+    public string WelcomeMessage;
+    // Used to check duplicate contacts (UC-2)
+    public override bool Equals(object obj){
+        AddressBookModel other = obj as AddressBookModel;
+        if (other == null){
             return false;
         }
-
-        AddressBookModel other=(AddressBookModel)obj;
-        return this.FirstName.Equals(other.FirstName) && this.LastName.Equals(other.LastName);
+        return FirstName.Equals(other.FirstName, StringComparison.OrdinalIgnoreCase) &&
+               LastName.Equals(other.LastName, StringComparison.OrdinalIgnoreCase);
     }
-
-    public override string ToString()
-    {
+    public override string ToString(){
         return FirstName + " " + LastName + ", " + City + ", " + State + ", " + PhoneNumber;
     }
 }
