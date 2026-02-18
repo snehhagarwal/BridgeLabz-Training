@@ -7,6 +7,8 @@ using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Reflection;
+
 
 // Utility class implementing interface
 public class AddressBookUtility : IAddressBook
@@ -49,51 +51,24 @@ public class AddressBookUtility : IAddressBook
     {
         try
         {
-            AddressBookModel person = new AddressBookModel();
+            AddressBookModel person =
+                CreateContactUsingReflection();
 
-            Console.Write("Enter First Name : ");
-            person.FirstName = Console.ReadLine();
+            if (person == null)
+                return;
 
-            Console.Write("Enter Last Name  : ");
-            person.LastName = Console.ReadLine();
-
-
-            // Duplicate Check
             foreach (var contact in contacts)
             {
                 if (contact.Equals(person))
-                {
                     throw new DuplicateContactException(
-                        "Duplicate contact found! Person already exists."
-                    );
-                }
+                        "Duplicate contact found! Person already exists.");
             }
-
-
-            Console.Write("Enter Address    : ");
-            person.Address = Console.ReadLine();
-
-            Console.Write("Enter City       : ");
-            person.City = Console.ReadLine();
-
-            Console.Write("Enter State      : ");
-            person.State = Console.ReadLine();
-
-            Console.Write("Enter Zip        : ");
-            person.Zip = Console.ReadLine();
-
-            Console.Write("Enter Phone No   : ");
-            person.PhoneNumber = Console.ReadLine();
-
-            Console.Write("Enter Email      : ");
-            person.Email = Console.ReadLine();
-
 
             contacts.Add(person);
 
             Console.WriteLine("Contact Added Successfully!");
         }
-        catch (DuplicateContactException ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
@@ -459,7 +434,8 @@ public class AddressBookUtility : IAddressBook
         }
     }
     //UC14
-        public void WriteContactsToCsvFile(){
+    public void WriteContactsToCsvFile()
+    {
         try
         {
             using (var writer = new StreamWriter(csvFilePath))
@@ -498,8 +474,9 @@ public class AddressBookUtility : IAddressBook
             Console.WriteLine(ex.Message);
         }
     }
-        //UC-15
-        public void WriteContactsToJsonFile(){
+    //UC-15
+    public void WriteContactsToJsonFile()
+    {
         try
         {
             var options = new JsonSerializerOptions
@@ -519,97 +496,146 @@ public class AddressBookUtility : IAddressBook
             Console.WriteLine(ex.Message);
         }
     }
-        public void ReadContactsFromJsonFile(){
-            try
-            {
-                if (!File.Exists(jsonFilePath))
-                {
-                    Console.WriteLine("JSON file not found.");
-                    return;
-                }
-
-                string jsonData = File.ReadAllText(jsonFilePath);
-
-                contacts =
-                    JsonSerializer.Deserialize<List<AddressBookModel>>(jsonData);
-
-                Console.WriteLine("Contacts read from JSON successfully!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        // UC-17 : Non-blocking JSON Write
-public async Task WriteContactsToJsonFileAsync()
-{
-    try
+    public void ReadContactsFromJsonFile()
     {
-        Console.WriteLine("Writing JSON asynchronously...");
-
-        var options = new JsonSerializerOptions
+        try
         {
-            WriteIndented = true
-        };
-
-        string jsonData =
-            JsonSerializer.Serialize(contacts, options);
-
-        await File.WriteAllTextAsync(jsonFilePath, jsonData);
-
-        Console.WriteLine("JSON written successfully (Async)!");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-}
-// UC-17 : Non-blocking JSON Read
-public async Task ReadContactsFromJsonFileAsync()
-{
-    try
-    {
-        Console.WriteLine("Reading JSON asynchronously...");
-
-        if (!File.Exists(jsonFilePath))
-        {
-            Console.WriteLine("JSON file not found.");
-            return;
-        }
-
-        string jsonData =
-            await File.ReadAllTextAsync(jsonFilePath);
-
-        var data =
-            JsonSerializer.Deserialize<List<AddressBookModel>>(jsonData);
-
-        if (data != null)
-            contacts = data;
-
-        Console.WriteLine("JSON read successfully (Async)!");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-}
-
-
-        // Display
-        private void DisplayContacts()
-        {
-            foreach (var contact in contacts)
+            if (!File.Exists(jsonFilePath))
             {
-                Console.WriteLine(contact);
+                Console.WriteLine("JSON file not found.");
+                return;
             }
+
+            string jsonData = File.ReadAllText(jsonFilePath);
+
+            contacts =
+                JsonSerializer.Deserialize<List<AddressBookModel>>(jsonData);
+
+            Console.WriteLine("Contacts read from JSON successfully!");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    // UC-17 : Non-blocking JSON Write
+    public async Task WriteContactsToJsonFileAsync()
+    {
+        try
+        {
+            Console.WriteLine("Writing JSON asynchronously...");
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            string jsonData =
+                JsonSerializer.Serialize(contacts, options);
+
+            await File.WriteAllTextAsync(jsonFilePath, jsonData);
+
+            Console.WriteLine("JSON written successfully (Async)!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    // UC-17 : Non-blocking JSON Read
+    public async Task ReadContactsFromJsonFileAsync()
+    {
+        try
+        {
+            Console.WriteLine("Reading JSON asynchronously...");
+
+            if (!File.Exists(jsonFilePath))
+            {
+                Console.WriteLine("JSON file not found.");
+                return;
+            }
+
+            string jsonData =
+                await File.ReadAllTextAsync(jsonFilePath);
+
+            var data =
+                JsonSerializer.Deserialize<List<AddressBookModel>>(jsonData);
+
+            if (data != null)
+                contacts = data;
+
+            Console.WriteLine("JSON read successfully (Async)!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private AddressBookModel CreateContactUsingReflection()
+    {
+        AddressBookModel person = new AddressBookModel();
+
+        var properties =
+            typeof(AddressBookModel).GetProperties();
+
+        foreach (var prop in properties)
+        {
+            var display =
+                prop.GetCustomAttribute<DisplayAttribute>();
+
+            if (display == null)
+                continue;
+
+            Console.Write($"Enter {display.Label}: ");
+            string input = Console.ReadLine();
+
+            var required =
+                prop.GetCustomAttribute<RequiredAttribute>();
+
+            if (required != null && string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine($"{display.Label} is required!");
+                return null;
+            }
+
+            prop.SetValue(person, input);
+        }
+
+        return person;
+    }
+    private void DisplayContacts()
+    {
+        foreach (var contact in contacts)
+        {
+            DisplayContact(contact);
+        }
+    }
 
     private void DisplayContacts(List<AddressBookModel> list)
     {
         foreach (var contact in list)
         {
-            Console.WriteLine(contact);
+            DisplayContact(contact);
         }
     }
 
+    private void DisplayContact(AddressBookModel contact)
+    {
+        var properties = typeof(AddressBookModel).GetProperties();
+
+        Console.WriteLine("\n----- Contact -----");
+
+        foreach (var prop in properties)
+        {
+            var display = prop.GetCustomAttribute<DisplayAttribute>();
+
+            if (display == null)
+                continue;
+
+            Console.WriteLine(
+                $"{display.Label}: {prop.GetValue(contact)}");
+        }
+
+        Console.WriteLine("-------------------");
+    }
 }
