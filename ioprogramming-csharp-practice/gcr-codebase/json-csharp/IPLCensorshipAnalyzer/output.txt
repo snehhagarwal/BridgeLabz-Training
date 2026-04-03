@@ -1,0 +1,19 @@
+I have completed all the requested code modifications and version changes. The project now builds successfully with .NET 10.0.
+
+When you run the application and enter '1' for "Process CSV file", the following will occur:
+
+1.  The `IPLCensorshipAnalyzer.Processors.IplCsvProcessor.ProcessCsv()` method will be executed.
+2.  It will read the `ipl.csv` file located in the `Data` directory.
+3.  The team names in columns 1, 2, and 5 will be masked, and column 6 (player of match) will be redacted to "REDACTED".
+4.  A new file named `ipl_censored.csv` will be created in the `Data` directory, containing the processed data.
+5.  A message "CSV processing complete." will be printed to the console.
+
+When you run the application and enter '2' for "Process JSON file", the following will occur:
+
+1.  The `IPLCensorshipAnalyzer.Processors.IplJsonProcessor.ProcessJson()` method will be executed.
+2.  It will read the `ipl.json` file located in the `Data` directory.
+3.  The `Team1`, `Team2`, `Winner` properties of `IplMatch` objects will be masked, and `PlayerOfMatch` will be redacted to "REDACTED". The keys in the `Score` dictionary will also be masked.
+4.  A new file named `ipl_censored.json` will be created in the `Data` directory, containing the processed data.
+5.  A message "JSON processing complete." will be printed to the console.
+
+You can now run the application yourself and interact with it.

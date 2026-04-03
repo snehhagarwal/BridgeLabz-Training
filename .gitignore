@@ -1,24 +1,18 @@
-# ===============================
-# .NET build folders
-# ===============================
+# Ignore output files
+output.txt
+**/output.txt
+
+# Ignore build outputs (C# / .NET)
 bin/
 obj/
-# ===============================
-# SonarQube
-# ===============================
+**/bin/
+**/obj/
+
+# Ignore SonarQube analysis files
 .sonarqube/
-# ===============================
-# Visual Studio / VS Code
-# ===============================
+**/.sonarqube/
+
+# Optional: Ignore Visual Studio temporary files
 .vs/
-.vscode/
-# ===============================
-# User-specific files
-# ===============================
 *.user
 *.suo
-# ===============================
-# OS generated files
-# ===============================
-Thumbs.db
-.DS_Store
