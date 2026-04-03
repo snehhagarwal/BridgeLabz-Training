@@ -1,18 +1,5 @@
-# Ignore output files
-output.txt
-**/output.txt
-
-# Ignore build outputs (C# / .NET)
+# =========================
+# Build folders
+# =========================
 bin/
 obj/
-**/bin/
-**/obj/
-
-# Ignore SonarQube analysis files
-.sonarqube/
-**/.sonarqube/
-
-# Optional: Ignore Visual Studio temporary files
-.vs/
-*.user
-*.suo
